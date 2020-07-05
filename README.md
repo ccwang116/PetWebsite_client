@@ -1,4 +1,4 @@
-<img width="964" alt="getPrime website photo" src="https://github.com/0126cloud/mano-shop_React.js/blob/master/localhost_3000_mall.png">
+<img width="964" alt="PetWebsite photo" src="https://github.com/ccwang116/PetWebsite_client/blob/master/PET_FEED_sreenshot.png">
 
 ## `npm install`
 
