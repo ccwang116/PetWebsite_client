@@ -38,8 +38,8 @@ function Editpassword(props) {
     <>
     <MemberSideLink>
     <Col md={10}>
-      <h1 className="text-white">修改會員密碼</h1>
-      <form style={{ width: "200px" ,color:"white"}}>
+      <h1 className="text-success">修改會員密碼</h1>
+      <form style={{ width: "200px" ,color:"#443629"}}>
         <Form.Group controlId="formBasicEmail" >
           <Form.Label>輸入舊密碼</Form.Label>
           <Form.Control

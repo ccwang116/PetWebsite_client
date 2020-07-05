@@ -328,7 +328,12 @@ function Cart(props) {
                 <br />
                   <span style={{fontWeight:"800",lineHeight:"120px"}}>
                     總金額 ${sum(mycartDisplay) + sumShipping(mycartDisplay)}
-                  </span></td>
+                  </span>
+                  <p className="text-muted">
+                    運費說明：常溫商品滿800免運，未滿需加運費100元;
+                    <br />冷凍鮮食商品滿1200免運，未滿需加運費150元。
+                  </p>
+                  </td>
                 </tr>
               </tbody>
             </Table>

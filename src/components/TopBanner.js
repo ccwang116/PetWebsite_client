@@ -9,7 +9,7 @@ function TopBanner(props) {
     return(
         <>
         <div className="d-flex flex-column flex-wrap justify-content-center align-items-center" >
-        <img className="w-100"  src={`${imageUrl}`}></img>
+        <img className="w-100" style={{height:"506px",objectFit:"cover"}} src={`${imageUrl}`}></img>
         <h1 style={{fontSize:'42px',margin:'20px auto'}} data-aos="fade-up"
                   data-aos-duration="800">{h1Title}</h1>
         <p style={{fontSize:'18px',height:'96px'}} className="text-muted text-center" data-aos="fade-up"

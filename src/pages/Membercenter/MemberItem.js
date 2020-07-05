@@ -1,29 +1,48 @@
-import React, { useState, useEffect } from "react"
-import { Table, Container, Row, Col, ListGroup, Image } from "react-bootstrap"
+import React, { useState, useEffect } from "react";
+import { Table, Container, Row, Col, ListGroup, Image } from "react-bootstrap";
 
 function MemberItem(props) {
-  const { member,isedit,setIsedit,ischangepwd, setIschangepwd} = props
-  useEffect(()=>{
-    document.getElementById("maintable").classList.add('membercenterlist')
-  })
+  const { member, isedit, setIsedit, ischangepwd, setIschangepwd } = props;
+  useEffect(() => {
+  });
   return (
     <>
-
-      <Col md={10} xs={12} className="mb-5"  style={{background:"white",borderRadius:'5px'}}>
-        <Table responsive id="maintable">
+      <Col md={3} xs={12}>
+        <Table  className="membercenterlist" style={{border:"1px solid #4E95A1"}}>
           <thead>
-            
             <tr>
-            
-              <th colSpan={4}>
-                <Image
-                  style={{ width: "100px", height: "100px" }}
+              <th>頭像</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td colSpan={4}>
+                <Row className="row-cols-2">
+                  <Col>
+                  <Image
+                  style={{ width: "100px", height: "100px",objectFit:"cover" }}
                   src={`http://localhost:3002/img-uploads/${member.memberImg}`}
                   alt={member.memberImg}
-                  rounded
+                  roundedCircle
                 />
-              </th>
+                  </Col>
+                  <Col><div>等級：貓奴</div></Col>
+                </Row>
+                
+                
+              </td>
             </tr>
+          
+          </tbody>
+        </Table>
+      </Col>
+      <Col
+        md={7}
+        xs={12}
+        className="mb-5"
+      >
+        <Table className="membercenterlist "style={{border:"1px solid #4E95A1"}}>
+          <thead>
             <tr>
               <th>會員帳號(email)</th>
               <th>會員密碼</th>
@@ -32,11 +51,12 @@ function MemberItem(props) {
           <tbody>
             <tr>
               <td>{member.email}</td>
-              <td>******
-              <button onClick={()=>setIschangepwd(!ischangepwd)}>
-              修改
-              </button>
-                </td>
+              <td>
+                ******
+                <a href="#"onClick={() => setIschangepwd(!ischangepwd)}>
+                  修改
+                </a>
+              </td>
             </tr>
           </tbody>
           <thead>
@@ -55,7 +75,10 @@ function MemberItem(props) {
           </thead>
           <tbody>
             <tr>
-              <td>{member.paymentCity}{member.paymentDistrict}</td>
+              <td>
+                {member.paymentCity}
+                {member.paymentDistrict}
+              </td>
               <td>{member.shipAddress}</td>
             </tr>
           </tbody>
@@ -69,12 +92,15 @@ function MemberItem(props) {
           </tbody>
         </Table>
         <div className=" d-flex justify-content-end">
-        <button className="btn btn-primary mb-3" onClick={() => setIsedit(!isedit)}>
-          Edit
-        </button>
+          <button
+            className="btn btn-primary mb-3"
+            onClick={() => setIsedit(!isedit)}
+          >
+            Edit
+          </button>
         </div>
       </Col>
     </>
-  )
+  );
 }
-export default MemberItem
+export default MemberItem;

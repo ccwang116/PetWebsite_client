@@ -69,18 +69,29 @@ function MemberEditForm(props) {
 
   return (
     <>
-      <Col md={10} xs={12} className="mb-5"style={{ background: "white" ,borderRadius:'5px'}}>
-        <Table responsive style={{ color: "#5C6447" }}>
+      <Col md={3} xs={12}>
+        <Table  className="membercenterlist" style={{border:"1px solid #4E95A1"}}>
           <thead>
             <tr>
-              <Image
-                style={{ width: "100px", height: "100px" }}
-                src={`http://localhost:3002/img-uploads/${member.memberImg}`}
-                alt={member.memberImg}
-                rounded
-              />
-              <th colSpan={4}>
-                <Form name="form1">
+              <th>頭像</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+         
+          <tr>
+              <td colSpan={4}>
+                <Row className="row-cols-2">
+                  <Col>
+                  <Image
+                  style={{ width: "100px", height: "100px",objectFit:"cover" }}
+                  src={`http://localhost:3002/img-uploads/${member.memberImg}`}
+                  alt={member.memberImg}
+                  roundedCircle
+                />
+                  </Col>
+                  <Col>
+                  <Form name="form1">
                   <Form.Group>
                     <Form.File
                       id="avatar"
@@ -96,13 +107,25 @@ function MemberEditForm(props) {
                         handleImgSave(member)
                       }}
                     >
-                      儲存為新的大頭貼
+                      儲存頭貼
                     </button>
                   </Form.Group>
                 </Form>
                 <img src="" alt="" id="myimg"></img>
-              </th>
+                  <div>等級：貓奴</div></Col>
+                </Row>
+                
+                
+              </td>
             </tr>
+          
+          </tbody>
+        </Table>
+      </Col>
+      <Col md={7} xs={12} className="mb-5"style={{ background: "white" ,borderRadius:'5px'}}>
+      <Table className="membercenterlist "style={{border:"1px solid #4E95A1"}}>
+        
+          <thead>
             <tr>
               <th>會員帳號(email)</th>
               <th>會員密碼</th>

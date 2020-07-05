@@ -22,7 +22,7 @@ const Faq = () => (
         <Card>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              Q2：Mano提供那些付款方式?
+              Q2：PETFEED提供那些付款方式?
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="1">
@@ -44,28 +44,17 @@ const Faq = () => (
           </Card.Header>
           <Accordion.Collapse eventKey="2">
             <Card.Body>
-              貴站希望能全心服務每一位客人，包含訂購如有問題或是流程等等皆可以順利服務到您，所以要麻煩先加入會員喔，謝謝。
+              本站希望能全心服務每一位客人，為了避免客人後續服務的品質受影響，希望訂購商品前能先加入會員，感謝您的配合。
             </Card.Body>
           </Accordion.Collapse>
         </Card>
 
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="3">
-              Q4：如何報名加入社群課程?
-            </Accordion.Toggle>
-          </Card.Header>
-          <Accordion.Collapse eventKey="3">
-            <Card.Body>
-              請將您喜歡的課程選擇好日期時段，並加入購物車完成結帳流程，即可報名您喜歡的各類課程哦~
-            </Card.Body>
-          </Accordion.Collapse>
-        </Card>
+       
 
         <Card>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="4">
-              Q5：今天訂購的商品可以明天到貨嗎? 我急著使用!
+              Q4：今天訂購的商品可以明天到貨嗎? 我急著使用!
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="4">
@@ -75,22 +64,9 @@ const Faq = () => (
           </Accordion.Collapse>
         </Card>
 
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="5">
-              Q6：如何追蹤我喜歡的商品或課程?
-            </Accordion.Toggle>
-          </Card.Header>
-          <Accordion.Collapse eventKey="5">
-            <Card.Body>
-              如需追蹤商品(課程)，須先加入會員。
-              在商品或課程列表的右下方會有追蹤此商品(課程)的按鈕，點擊後會提示該商品(課程)已完成追蹤。
-            </Card.Body>
-          </Accordion.Collapse>
-        </Card>
+        
       </Accordion>
-      <p>如有問題請致電 : 0987-123-321</p>
-      <p>感謝您的來電，謝謝!</p>
+      
     </div>
   </div>
 )

@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { Table, Container, Row, Col, ListGroup, Image } from 'react-bootstrap'
 
 function MemberSideLink(props) {
+  const [listShow,setListShow]=useState(false)
   const aListStyle = {
     background: 'transparent',
     color: 'var(--secondColor)',
@@ -30,16 +31,19 @@ function MemberSideLink(props) {
     locationPathname = '/memberorders'
 
   const index = pathlist.findIndex((v) => v === locationPathname)
-
+useEffect(()=>{
+  (document.body.offsetWidth > 978)?setListShow(true):setListShow(false)
+},[])
   return (
     <>
       <Container style={{ padding: '0' }}>
         <Row>
           <Col md={2}>
-              <nav className="navbar navbar-expand-lg navbar-dark ">
+              <nav className="navbar navbar-expand-lg navbar-light ">
                 <button
-                  className="btn btn-primary w-100 navbar-toggler"
+                  className="btn btn-warning w-100 navbar-toggler text-secondary"
                   type="button"
+                  onClick={()=>{setListShow(!listShow)}}
                   data-toggle="collapse"
                   data-target="#navbarSupportedContent"
                   aria-controls="navbarSupportedContent"
@@ -51,8 +55,9 @@ function MemberSideLink(props) {
                     <i className="fas fa-sort-down"></i>
                   </span>
                 </button>
+                {listShow?(
                 <div
-                  className="collapse navbar-collapse"
+                  className=""
                   id="navbarSupportedContent"
                 >
                   <ListGroup>
@@ -85,7 +90,7 @@ function MemberSideLink(props) {
                       我的追蹤
                     </ListGroup.Item>
                   </ListGroup>
-                </div>
+                </div>):""}
               </nav>
           </Col>
           {props.children}

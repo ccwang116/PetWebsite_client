@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
-import MyBanner from '../components/MyBanner'
+import TopBanner from '../components/TopBanner'
 import MyBreadcrumb from '../components/MyBreadcrumb'
 
 function About(props) {
@@ -9,19 +9,8 @@ function About(props) {
 
   return (
     <>
-      <MyBanner title="關於我們" lead="首頁是一個網站的第一個看到的頁面" />
-      <MyBreadcrumb />
-      <div>
-        <a href="/">Home - a tag</a>
-        <br />
-        <Link to="/">Home - Router Link</Link>
-      </div>
-      <hr />
-      <div>
-        <a href="/todoapp">Todo - a tag</a>
-        <br />
-        <Link to="/todoapp">Todo - Router Link</Link>
-      </div>
+      <TopBanner imageUrl="https://cdn.pixabay.com/photo/2016/01/19/17/41/friends-1149841_960_720.jpg" h1Title="關於我們"pageDesciption="PET FEED在乎您與寵物的生活品質。" />
+      
     </>
   )
 }

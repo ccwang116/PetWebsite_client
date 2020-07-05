@@ -1,23 +1,17 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import TopBanner from '../components/TopBanner'
+import ProductList from "./ProductList/ProductList";
 
-import MyBanner from '../components/MyBanner'
+
 
 function Home(props) {
-  //console.log(props)
+  const {menuId,setMenuId}=props
   return (
     <>
-      <MyBanner title="首頁" lead="首頁是一個網站的第一個看到的頁面" />
-      <div>
-        <a href="/about">About - a tag</a>
-        <br />
-        <Link to="/about">About - Router Link</Link>
-      </div>
-      <hr />
-      <div>
-        <a href="/todoapp">Todo - a tag</a>
-        <br />
-        <Link to="/todoapp">Todo - Router Link</Link>
+      <TopBanner imageUrl="https://cdn.pixabay.com/photo/2018/04/10/16/05/people-3307913_960_720.jpg" h1Title="PET FEED"pageDesciption="我們提供多種寵物健康鮮食選擇，讓您與寵物生活更無憂無慮" />
+      <div className="row">
+      <ProductList menuId={menuId} setMenuId={setMenuId}/>
       </div>
     </>
   )

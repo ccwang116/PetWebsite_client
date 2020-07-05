@@ -19,7 +19,6 @@ function MemberOrders(props) {
   const [pageArr, setPagearr] = useState([])
   const [pageNow, setPagenow] = useState(1)
   const [detail, setDetail] = useState([])
-  const [coursedetail, setCoursedetail] = useState([])
   const [detailshow, setDetailshow] = useState(false)
   const [orderindex, setOrderindex] = useState(0)
   const [searchTerm, setSearchTerm] = useState('')
@@ -140,27 +139,9 @@ function MemberOrders(props) {
     // 設定資料
     setDetail(data)
   }
-  async function getCourseDetailData(orderId) {
-    const request = new Request(
-      `http://localhost:3002/membercenter/memberordercoursedetail/${orderId}`,
-      {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'appliaction/json',
-        }),
-      }
-    )
-
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log('詳細的課程資料', data)
-    // 設定資料
-    setCoursedetail(data)
-  }
+  
   function handleDetailShow(orderId) {
     getDetailData(orderId)
-    getCourseDetailData(orderId)
     setDetailshow(true)
   }
   const activeStyle = {width:"120px",height:"44px",color:"#4E95A1",background:"#FFCC84",borderBottom:"2px solid #C5895A"}
@@ -199,18 +180,7 @@ function MemberOrders(props) {
               </tr>
             )
           })}
-          {coursedetail.map((value, index) => {
-            return (
-              <tr key={index}>
-                <td title={value.courseName}>
-                  課程：{value.courseName.substr(0, 4)}...
-                </td>
-                <td>${value.checkPrice}</td>
-                <td>{value.checkQuantity}人</td>
-                <td>${value.checkSubtotal}</td>
-              </tr>
-            )
-          })}
+          
 
           <tr className="text-danger">
             <td>運費</td>

@@ -32,9 +32,9 @@ function MyBreadcrumb(props) {
     borderRadius: '5px 0 0 5px',
     width: '20%',
     height: '100%',
-    border: '1px solid white',
+    border: '1px solid #4E95A1',
     borderRight: 'none',
-    color: 'white',
+    color: '#cccccc',
     padding: '0',
   }
   const searchbar = {
@@ -42,8 +42,9 @@ function MyBreadcrumb(props) {
     width: '80%',
     height: '100%',
     background: 'transparent',
+    border: '1px solid #4E95A1',
     borderLeft: 'none',
-    color: 'white',
+    color: '#4E95A1',
   }
 
   const inputshow = (
@@ -73,7 +74,7 @@ function MyBreadcrumb(props) {
             handleClickSearch(searchTerm)
           }
         }}
-        className="ordersearch"
+        className="outline-success"
         style={searchbar}
       />
     </Form>
@@ -81,7 +82,7 @@ function MyBreadcrumb(props) {
 
   return (
     <>
-      <Container>
+      <Container className="mt-5">
         <Row>
           <Col md={2}></Col>
           <Col md={10} className="p-0">

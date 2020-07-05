@@ -27,6 +27,8 @@ import MyWelcome from './pages/login/welcome'
 import MyRegister from './pages/login/register'
 import MyForgetPwd from './pages/login/forgetPwd'
 import Faq from './pages/Faq'
+import Marketing from './pages/Marketing'
+
 
 
 
@@ -147,7 +149,6 @@ function App(props) {
                 loginProcess={loginProcess}
                 logoutProcess={logoutProcess}
                 loginErrors={loginErrors}
-                
               />
              
             </Route>
@@ -172,18 +173,7 @@ function App(props) {
               <CartPayment />
             </Route>
 
-            <Route path="/login">
-              <Login
-                username={username}
-                setUsername={setUsername}
-                setPassword={setPassword}
-                loginProcess={loginProcess}
-                logoutProcess={logoutProcess}
-                loginErrors={loginErrors}
-                data={data}
-                setData={setData}
-              />
-            </Route>
+            
 
             <Route path="/welcome">
               <MyWelcome
@@ -219,9 +209,6 @@ function App(props) {
             <Route path="/memberorders">
               <MemberOrders/>
             </Route>
-            {/* <ProtectedRoute path="/todoapp">
-              <TodoApp todos={todos} setTodos={setTodos} isAuth={auth} />
-            </ProtectedRoute> */}
             <Route exact path="/membercenter">
               <Membercenter />
             </Route>
@@ -234,8 +221,16 @@ function App(props) {
             <Route exact path="/membercenter/memberitemtracking">
               <MemberItemtrack/>
             </Route>
+            <Route exact path="/life/marketing">
+              <Marketing />
+            </Route>
+
+
             <Route exact path="/">
-              <Home />
+              <Home menuId={menuId} setMenuId={setMenuId}/>
+            </Route>
+            <Route exact path="/faq">
+              <Faq />
             </Route>
             <Route exact path="*">
               <NotFoundPage />

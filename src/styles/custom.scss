@@ -27,8 +27,14 @@ main > .container {
   border:2px solid #C5895A;
 }
 .membercenterlist{
-  color:#5C6447;
+  color:var(--secondColor);
+  
 }
+.membercenterlist thead{
+  color:#fff;
+  background:var(--thirdColor);
+}
+
 
 .pdlTitle{
   color: var(--thirdColor);
