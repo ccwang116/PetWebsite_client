@@ -1,5 +1,4 @@
 import React from 'react'
-import './login.scss'
 // import MyBanner from '../../components/MyBanner'
 import MyBreadcrumb from '../../components/MyBreadcrumb'
 import { withRouter } from 'react-router-dom'
@@ -11,7 +10,7 @@ function MyWelcome(props) {
 
   //continue shop的callback
   const continueShopCallback = () => {
-    alert('開始購物囉!!!')
+    alert('登入成功')
     props.history.push('/shop', { from: '從登入頁來的' })
   }
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import './login.scss'
 import { withRouter } from 'react-router-dom'
 
 var sha1 = require('sha1')

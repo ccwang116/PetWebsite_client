@@ -1,5 +1,4 @@
 import React from 'react'
-import './login.scss'
 import { withRouter } from 'react-router-dom'
 
 function MyForgetPwd(props) {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './login.scss'
 import { withRouter } from 'react-router-dom'
 import { error } from 'jquery'
 
@@ -61,9 +60,9 @@ function MyLogin(props) {
   }
 
   const forgetButton = (
-    <div className="loginBlock">
+    <div className="">
       <button
-        className="btn btn-primary mb2 loginBlock forgetBtn"
+        className="btn btn-secondary mb-2 w-100"
         onClick={() => {
           logoutProcess(forgetCallback)
         }}
@@ -74,9 +73,9 @@ function MyLogin(props) {
   )
 
   const registerButton = (
-    <div className="loginBlock">
+    <div className="">
       <button
-        className="btn btn-primary mb2 loginBlock registerBtn"
+        className="btn btn-success mb-2 w-100"
         onClick={() => {
           logoutProcess(registerCallback)
         }}
@@ -90,10 +89,8 @@ function MyLogin(props) {
     
     <>
       <form action="" method="">
-        <div className="bg position-relative d-flex">
-          <div className="bgLeft">
-            <div className="loginInput">
-              <div className="loginBlock">
+      <div className=" position-absolute bg-white" style={{width:"250px",height:"320px",left:"840px",top:"140px",opacity:"0.8",borderRadius:"10px"}}></div>
+        <div className=" position-absolute " style={{left:"860px",top:"160px"}}>
                 <h5>Account</h5>
                 <input
                   className="form-control mb2"
@@ -106,8 +103,6 @@ function MyLogin(props) {
                     setUsername(event.target.value)
                   }}
                 />
-              </div>
-              <div className="loginBlock">
                 <h5>Password</h5>
                 <input
                   className="form-control mb2"
@@ -118,11 +113,11 @@ function MyLogin(props) {
                     setPassword(event.target.value)
                   }}
                 />
-                <div className="loginBlock">
+                
                   <input
                     value="login"
                     type="submit"
-                    className="btn btn-primary mb2 loginBlock loginBtn"
+                    className="btn btn-warning mb-2 w-100"
                     onMouseEnter={() => {
                       console.log(data)
                       getData(username)
@@ -131,20 +126,17 @@ function MyLogin(props) {
                       loginProcess(loginSuccessCallback)
                     }}
                   />
-                </div>
+                
                 {registerButton}
                 {forgetButton}
                 {displayErrors}
-              </div>
-            </div>
-          </div>
-          <div className="bgRight-login"></div>
         </div>
       </form>
     </>
   )
 
-  return <>{displayForm}</>
+  return <><div className="W-100 position-relative" style={{height:"506px",backgroundClip:'cover',background:"url('https://cdn.pixabay.com/photo/2018/01/02/13/01/dog-3056131_960_720.jpg')"}}></div>
+  {displayForm}</>
 }
 
 export default withRouter(MyLogin)
