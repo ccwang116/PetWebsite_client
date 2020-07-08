@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import Items from "../../components/Items";
 import CategoryBar from "../../components/CategoryBar/CategoryBar";
 

@@ -8,6 +8,9 @@ import MainContent from './components/MainContent'
 import Home from './pages/Home'
 import About from './pages/About'
 import ProductList from './pages/ProductList/ProductList'
+import ItemDetail from './pages/ItemDetail/ItemDetail'
+
+import ItemTracking from './pages/ItemTracking/ItemTracking'
 
 import CartComfirm from "./pages/Cart/CartComfirm"
 import CartComfirmChange from "./pages/Cart/CartComfirmChange"
@@ -156,7 +159,10 @@ function App(props) {
             <Route path="/shop/:second?/:third?/:fourth?/:page?">
               <ProductList menuId={menuId} setMenuId={setMenuId}/>
             </Route>
-            
+            <Route path="/mall/itemDetail/:second?/:third?/:fourth?/:fifth?/:sixth?/:seventh?/:page?">
+              <ItemDetail />
+            </Route>
+
             <Route path="/cart" exact>
               <Cart />
             </Route>

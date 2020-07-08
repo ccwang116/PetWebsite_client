@@ -2,14 +2,8 @@ import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 
 import {
-  Table,
-  Container,
   Row,
   Col,
-  ListGroup,
-  Image,
-  Media,
-  Button,
 } from "react-bootstrap";
 
 function Item(props) {
@@ -27,13 +21,14 @@ function Item(props) {
     
     alert("已加入購物車!");
   }
+ 
   return (
     <Row className="row-cols-md-4 row-cols-1 mb-5">
       {data.map((value, index) => {
         return (
           <>
             <Col key={index} className=" item-card p-1">
-              <a href="#" title={value.itemName}>
+              <a href={`/mall/itemDetail/categoryId=${value.itemCategoryId}?itemId=${value.itemId}`} title={value.itemName}>
                 <img src={`/items/${value.itemImg}`} />
               </a>
               <Row>
