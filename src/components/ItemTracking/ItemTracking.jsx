@@ -32,7 +32,6 @@ function ItemTracking (props) {
     useEffect(()=>{
       const username = JSON.parse(localStorage.getItem('member'))
 
-      props.changeBackgroundColorLight() 
       //getItemsData();
       getItemsData(username[0].memberName)
       setUsername(username[0].memberName)
