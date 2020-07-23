@@ -40,6 +40,9 @@ import MemberLogin from './pages/MemberLogin'
 
 import ProtectedRoute from './utils/ProtectedRoute'
 
+import Appointment from './pages/Clinic/Appointment'
+
+
 var sha1 = require('sha1');
 
 function App(props) {
@@ -135,7 +138,7 @@ function App(props) {
   return (
     <Router>
       <>
-        <MyNavbar  name={name} menuId={menuId} setMenuId={setMenuId}/>
+      <MyNavbar name={name} menuId={menuId} setMenuId={setMenuId}/>
         <MainContent>
           <Switch>
             <Route path="/about">
@@ -161,6 +164,10 @@ function App(props) {
             </Route>
             <Route path="/mall/itemDetail/:second?/:third?/:fourth?/:fifth?/:sixth?/:seventh?/:page?">
               <ItemDetail />
+            </Route>
+            
+            <Route path="/appointment" exact>
+              <Appointment />
             </Route>
 
             <Route path="/cart" exact>

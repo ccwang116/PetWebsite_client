@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Doctor Arrangement</title>
+  <meta charset="utf-8" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css"
+    integrity="sha256-xCwPhis8IrHF+H7tLrzJYU6oZxE+kJu2cC4JKE3FG1g=" crossorigin="anonymous">
+  <style>
+    .oraBox {
+      width: 10px;
+      height: 10px;
+      background: orange;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .purBox {
+      width: 10px;
+      height: 10px;
+      background: purple;
+      border-radius: 50%;
+      display: inline-block;
+
+    }
+
+    .pinkBox {
+      width: 10px;
+      height: 10px;
+      background: pink;
+      border-radius: 50%;
+      display: inline-block;
+
+    }
+    .blueBox {
+      width: 10px;
+      height: 10px;
+      background: blue;
+      border-radius: 50%;
+      display: inline-block;
+
+    }
+  </style>
+</head>
+
+<body>
+  <nav fixed="top" class="navbar navbar-dark justify-content-between bg-dark " style=" height: 63px">
+    <a class="navbar-brand" href="/">PET FEED</a>
+    <form class="form-inline my-2 my-lg-0">
+      <a href="http://localhost:3000/shop/" class="text-white">
+        回商城
+      </a>
+    </form>
+  </nav>
+  <h1 class="w-100 text-center">掛號</h1>
+
+  <!--Add buttons to initiate auth sequence and sign out-->
+  <div class="w-100 row justify-content-center">
+
+    <div class="col-md-2">
+      <button id="authorize_button" class="btn btn-primary" style="display: none;">登入我的Google</button>
+      <button id="signout_button" class="btn btn-primary" style="display: none;">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for=""></label>
+          <div class="form-group">
+            <label for="">掛號醫師</label>
+            <select class="form-control" name="title" id="title">
+              <option>王東堯</option>
+              <option>邱威智</option>
+              <option>邱宏仁</option>
+              <option>林怡君</option>
+            </select>
+          </div>
+          <label for="">預約日期</label>
+          <input type="date" name="start" id="start" class="form-control" placeholder="start" />
+          <label for="">時段</label>
+          <select class="form-control" name="time" id="time">
+            <option value="T01:00:00.000Z">早上</option>
+            <option value="T05:00:00.000Z">下午</option>
+            <option value="T11:00:00.000Z">晚上</option>
+          </select>
+          <label for="">預約人</label>
+          <input type="text" name="des" id="des" class="form-control" placeholder="您的大名" />
+
+
+          <div class="form-group">
+            <label for="">科別</label>
+            <select class="form-control" name="color" id="color">
+              <option value="Purple">外科</option>
+              <option value="Pink">內科</option>
+              <option value="Orange">兒科</option>
+              <option value="blue">家醫科</option>
+
+            </select>
+          </div>
+
+        </div>
+        <button class="btn btn-primary" onclick="insertEvents()">Add</button>
+        <br>
+        <a href="/gcalendar.html">結合google個人行事曆 版本</a>
+
+      </div>
+      <div class="col-md-9">
+
+
+        <div id='calendar'></div>
+        <div>
+          科別＝
+          <div class="oraBox"></div>兒科
+          <div class="purBox"></div>外科<div class="pinkBox"></div>內科
+          <div class="blueBox"></div>
+          家醫科
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <script type="text/javascript">
+    var eventArray = []
+
+    //產生full calendar
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //   var calendarEl = document.getElementById('calendar');
+    //   var calendar = new FullCalendar.Calendar(calendarEl, {
+    //     initialView: 'dayGridMonth',
+    //     timeZone: 'local',
+    //     editable: true,
+    //     events: eventArray
+    //   });
+    //   calendar.render();
+    // });
+
+    // events: [{
+    //   title: '活動',
+    //   start: '2020-07-11'
+    // }, {
+    //   title: '持續一周的活動',
+    //   start: '2020-07-13',
+    //   end: '2020-07-17',
+    //   color: 'lightBlue'
+    // }]
+
+    function insertEvents() {
+      var start = document.getElementById("start").value;
+      var time = document.getElementById("time").value;
+      var title = document.getElementById('title').value;
+      var des = document.getElementById('des').value;
+      var color = document.getElementById('color').value;
+
+      //加入fullcalendar
+      ajaxArr.push({
+        title: title,
+        start: start + time,
+        color: color
+      })
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',//'timeGridWeek'or'dayGridMonth'dayGridWeek
+        timeZone: 'local',
+        editable: true,
+        events: ajaxArr
+      });
+      calendar.render();
+      alert('預約成功')
+    }    
+  </script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"
+    integrity="sha256-7yls1M3dy6QygFguIcH41pLo8CvpiopdyaUsMAQ8zLo=" crossorigin="anonymous"></script>
+
+
+  <script type="text/javascript">
+    let ajaxArr = []
+    $.ajax({
+      method: "GET",
+      url: "arrangement.json",
+      dataType: "json"
+    }).done(function (data) {
+      data.forEach(function (item) {
+        let DoctorName = item.DoctorName.substr(0, 1)
+        let DepartmentName = item.DepartmentName
+        let parentAmount = item.Parent.length
+        let Amount = item.MaxAmount - parentAmount
+        let ArrangeTime = new Date(item.ArrangeTime).getTime() - 28800000
+        let Color = ""
+        switch (DepartmentName) {
+          case "內科":
+            Color = "pink"
+            break;
+          case "外科":
+            Color = "purple"
+            break;
+          case "兒科":
+            Color = "orange"
+            break;
+          case "家醫科":
+          Color = "blue"
+          break;
+        }
+        ajaxArr.push({
+          title: DoctorName + "已約:" + parentAmount + ",尚餘" + Amount,
+          start: ArrangeTime,
+          color: Color
+        })
+
+      })
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        timeZone: 'local',
+        editable: true,
+        events: ajaxArr
+      });
+      calendar.render();
+    })
+      .fail(function () {
+        alert("json is not exist");
+      }).always(function () {
+        // alert( "complete" );
+      });
+
+
+  </script>
+</body>
+
+</html>

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Table, Container, Row, Col, ListGroup, Image } from "react-bootstrap"
 
-import { withRouter } from "react-router-dom"
 import MemberListShow from "./MemberListShow"
 import Editpassword from "./Editpassword"
 import MyBreadcrumb from '../../components/MyBreadcrumbForMember'
@@ -27,7 +25,11 @@ function Membercenter(props) {
     const data = await response.json()
     console.log("顯示的資料", data)
     // 設定資料
-    setMember(data[0])
+    if (data.length > 0) {
+      setMember(data[0])
+    } else {
+      setMember(localMember[0])
+    }
   }
   useEffect(() => {
     getData(localMember[0].memberId)

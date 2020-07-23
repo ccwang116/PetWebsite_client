@@ -229,7 +229,18 @@ function MyNavbar(props) {
                 ""
               )}
             </a>
-            
+            <a
+              className="nav-link"
+              href="/appointment"
+            >
+              合作診所
+            </a>
+            <a
+              className="nav-link"
+              href="/gcalendar.html"
+            >
+              寵物美容行程
+            </a>
           </Nav>
         </div>
         {/* <Nav.Link as={NavLink} to="/faq">
