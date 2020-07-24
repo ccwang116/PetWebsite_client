@@ -7,7 +7,7 @@ const doctorData = [
       "DepartmentName": "家醫科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": ["張怡秀", "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
+      "Patient": ["張怡秀", "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
       "ArrangeTime": "2020-07-09T09:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -20,7 +20,7 @@ const doctorData = [
       "DepartmentName": "內科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": ["張怡秀",  "白憲雅", "王菁哲", "吳馨慧"],
+      "Patient": ["張怡秀",  "白憲雅", "王菁哲", "吳馨慧"],
       "ArrangeTime": "2020-07-19T09:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -33,7 +33,7 @@ const doctorData = [
       "DepartmentName": "外科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": ["張怡秀",  "王菁哲", "吳馨慧"],
+      "Patient": ["張怡秀",  "王菁哲", "吳馨慧"],
       "ArrangeTime": "2020-07-20T09:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -46,7 +46,7 @@ const doctorData = [
       "DepartmentName": "兒科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": ["張怡秀", "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
+      "Patient": ["張怡秀", "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
       "ArrangeTime": "2020-07-21T13:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -59,7 +59,7 @@ const doctorData = [
       "DepartmentName": "兒科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": [ "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
+      "Patient": [ "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
       "ArrangeTime": "2020-07-22T13:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -72,7 +72,7 @@ const doctorData = [
       "DepartmentName": "外科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": ["張怡秀", "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
+      "Patient": ["張怡秀", "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
       "ArrangeTime": "2020-07-23T13:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -85,7 +85,7 @@ const doctorData = [
       "DepartmentName": "內科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": ["張怡秀", "吳馨慧"],
+      "Patient": ["張怡秀", "吳馨慧"],
       "ArrangeTime": "2020-07-20T18:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -98,7 +98,7 @@ const doctorData = [
       "DepartmentName": "內科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": ["張怡秀", "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
+      "Patient": ["張怡秀", "梁雅茹", "白憲雅", "王菁哲", "吳馨慧"],
       "ArrangeTime": "2020-07-21T18:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -111,7 +111,7 @@ const doctorData = [
       "DepartmentName": "家醫科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": [],
+      "Patient": [],
       "ArrangeTime": "2020-07-25T18:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -124,7 +124,7 @@ const doctorData = [
       "DepartmentName": "外科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": [],
+      "Patient": [],
       "ArrangeTime": "2020-07-20T19:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -137,7 +137,7 @@ const doctorData = [
       "DepartmentName": "兒科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": [],
+      "Patient": [],
       "ArrangeTime": "2020-07-23T19:00:00.000Z",
       "MaxAmount": "10",
       "note": ""
@@ -150,7 +150,7 @@ const doctorData = [
       "DepartmentName": "家醫科",
       "City": "台北市",
       "District": "中正區",
-      "Parent": [],
+      "Patient": [],
       "ArrangeTime": "2020-07-23T13:00:00.000Z",
       "MaxAmount": "10",
       "note": ""

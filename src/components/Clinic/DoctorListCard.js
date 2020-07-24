@@ -30,8 +30,8 @@ function DoctorListCard(props) {
                     <td>{value.DoctorName}</td>
                     <td>{value.DepartmentName}</td>
                     <td>{value.ArrangeTime}</td>
-                    <td>{value.Parent.length}</td>
-                    <td>{value.MaxAmount - value.Parent.length}</td>
+                    <td>{value.Patient.length}</td>
+                    <td>{value.MaxAmount - value.Patient.length}</td>
                   </tr>
                 </>
               );

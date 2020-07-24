@@ -69,59 +69,59 @@ function MonthCard(props) {
         <p>{today.getMonth() + 1}月</p>
       </div>
 
-      <div class="row row-cols-12">
-        <div class="col">日</div>
-        <div class="col">一</div>
-        <div class="col">二</div>
-        <div class="col">三</div>
-        <div class="col">四</div>
-        <div class="col">五</div>
-        <div class="col">六</div>
+      <div className="row row-cols-12">
+        <div className="col">日</div>
+        <div className="col">一</div>
+        <div className="col">二</div>
+        <div className="col">三</div>
+        <div className="col">四</div>
+        <div className="col">五</div>
+        <div className="col">六</div>
       </div>
-      <div class="row row-cols-12">
-        <div class="col">{allday.sun[0]}</div>
-        <div class="col">{allday.mon[0]}</div>
-        <div class="col">{allday.tue[0]}</div>
-        <div class="col">{allday.wed[0]}</div>
-        <div class="col">{allday.thu[0]}</div>
-        <div class="col">{allday.fri[0]}</div>
-        <div class="col">{allday.sat[0]}</div>
+      <div className="row row-cols-12">
+        <div className="col">{allday.sun[0]}</div>
+        <div className="col">{allday.mon[0]}</div>
+        <div className="col">{allday.tue[0]}</div>
+        <div className="col">{allday.wed[0]}</div>
+        <div className="col">{allday.thu[0]}</div>
+        <div className="col">{allday.fri[0]}</div>
+        <div className="col">{allday.sat[0]}</div>
       </div>
-      <div class="row row-cols-12">
-        <div class="col">{allday.sun[1]}</div>
-        <div class="col">{allday.mon[1]}</div>
-        <div class="col">{allday.tue[1]}</div>
-        <div class="col">{allday.wed[1]}</div>
-        <div class="col">{allday.thu[1]}</div>
-        <div class="col">{allday.fri[1]}</div>
-        <div class="col">{allday.sat[1]}</div>
+      <div className="row row-cols-12">
+        <div className="col">{allday.sun[1]}</div>
+        <div className="col">{allday.mon[1]}</div>
+        <div className="col">{allday.tue[1]}</div>
+        <div className="col">{allday.wed[1]}</div>
+        <div className="col">{allday.thu[1]}</div>
+        <div className="col">{allday.fri[1]}</div>
+        <div className="col">{allday.sat[1]}</div>
       </div>
-      <div class="row row-cols-12">
-        <div class="col">{allday.sun[2]}</div>
-        <div class="col">{allday.mon[2]}</div>
-        <div class="col">{allday.tue[2]}</div>
-        <div class="col">{allday.wed[2]}</div>
-        <div class="col">{allday.thu[2]}</div>
-        <div class="col">{allday.fri[2]}</div>
-        <div class="col">{allday.sat[2]}</div>
+      <div className="row row-cols-12">
+        <div className="col">{allday.sun[2]}</div>
+        <div className="col">{allday.mon[2]}</div>
+        <div className="col">{allday.tue[2]}</div>
+        <div className="col">{allday.wed[2]}</div>
+        <div className="col">{allday.thu[2]}</div>
+        <div className="col">{allday.fri[2]}</div>
+        <div className="col">{allday.sat[2]}</div>
       </div>
-      <div class="row row-cols-12">
-        <div class="col">{allday.sun[3]}</div>
-        <div class="col">{allday.mon[3]}</div>
-        <div class="col">{allday.tue[3]}</div>
-        <div class="col">{allday.wed[3]}</div>
-        <div class="col">{allday.thu[3]}</div>
-        <div class="col">{allday.fri[3]}</div>
-        <div class="col">{allday.sat[3]}</div>
+      <div className="row row-cols-12">
+        <div className="col">{allday.sun[3]}</div>
+        <div className="col">{allday.mon[3]}</div>
+        <div className="col">{allday.tue[3]}</div>
+        <div className="col">{allday.wed[3]}</div>
+        <div className="col">{allday.thu[3]}</div>
+        <div className="col">{allday.fri[3]}</div>
+        <div className="col">{allday.sat[3]}</div>
       </div>
-      <div class="row row-cols-12">
-        <div class="col">{allday.sun[4]}</div>
-        <div class="col">{allday.mon[4]}</div>
-        <div class="col">{allday.tue[4]}</div>
-        <div class="col">{allday.wed[4]}</div>
-        <div class="col">{allday.thu[4]}</div>
-        <div class="col">{allday.fri[4]}</div>
-        <div class="col">{allday.sat[4]}</div>
+      <div className="row row-cols-12">
+        <div className="col">{allday.sun[4]}</div>
+        <div className="col">{allday.mon[4]}</div>
+        <div className="col">{allday.tue[4]}</div>
+        <div className="col">{allday.wed[4]}</div>
+        <div className="col">{allday.thu[4]}</div>
+        <div className="col">{allday.fri[4]}</div>
+        <div className="col">{allday.sat[4]}</div>
       </div>
     </>
   );

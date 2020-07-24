@@ -252,13 +252,13 @@ function MyNavbar(props) {
         <div>
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} to="/cart">
-          <i class="fas fa-shopping-cart"></i>
+          <i className="fas fa-shopping-cart"></i>
           </Nav.Link>
           <Nav.Link as={NavLink} to="/membercenter">
-          <i class="fas fa-user-alt"></i>
+          <i className="fas fa-user-alt"></i>
           </Nav.Link>
           <Nav.Link as={NavLink} to="/login" style={{ width: "44px" }}>
-          <i class="fas fa-sign-in-alt"></i>
+          <i className="fas fa-sign-in-alt"></i>
           </Nav.Link>
           </Nav>
         </div>
