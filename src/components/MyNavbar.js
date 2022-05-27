@@ -8,7 +8,6 @@ function MyNavbar(props) {
   const [catShow, setCatShow] = useState(false);
   const [healthShow, setHealthShow] = useState(false);
 
-
   const member = JSON.parse(localStorage.getItem("member")) || [
     { memberName: "" },
   ];
@@ -71,7 +70,10 @@ function MyNavbar(props) {
               className="nav-link"
               onMouseEnter={() => setDogShow(true)}
               onMouseLeave={() => setDogShow(false)}
-              onClick={() => {setDogShow(false);setMenuId(2);}}
+              onClick={() => {
+                setDogShow(false);
+                setMenuId(2);
+              }}
             >
               狗食
               {dogShow ? (
@@ -115,15 +117,17 @@ function MyNavbar(props) {
                 ""
               )}
             </a>
-            
-        
+
             <a
               href="http://localhost:3000/shop/catfood"
               style={{ position: "relative" }}
               className="nav-link"
               onMouseEnter={() => setCatShow(true)}
               onMouseLeave={() => setCatShow(false)}
-              onClick={() => {setCatShow(false);setMenuId(5);}}
+              onClick={() => {
+                setCatShow(false);
+                setMenuId(5);
+              }}
             >
               貓食
               {catShow ? (
@@ -167,15 +171,17 @@ function MyNavbar(props) {
                 ""
               )}
             </a>
-            
-         
+
             <a
               href="http://localhost:3000/shop/catfood"
               style={{ position: "relative" }}
               className="nav-link"
               onMouseEnter={() => setHealthShow(true)}
               onMouseLeave={() => setHealthShow(false)}
-              onClick={() => {setHealthShow(false);setMenuId(9);}}
+              onClick={() => {
+                setHealthShow(false);
+                setMenuId(9);
+              }}
             >
               健康保健
               {healthShow ? (
@@ -229,16 +235,10 @@ function MyNavbar(props) {
                 ""
               )}
             </a>
-            <a
-              className="nav-link"
-              href="/appointment"
-            >
+            <a className="nav-link" href="/appointment">
               合作診所
             </a>
-            <a
-              className="nav-link"
-              href="/gcalendar.html"
-            >
+            <a className="nav-link" href="/gcalendar.html">
               寵物美容行程
             </a>
           </Nav>
@@ -250,16 +250,16 @@ function MyNavbar(props) {
           關於我們
         </Nav.Link> */}
         <div>
-        <Nav className="mr-auto">
-          <Nav.Link as={NavLink} to="/cart">
-          <i className="fas fa-shopping-cart"></i>
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/membercenter">
-          <i className="fas fa-user-alt"></i>
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/login" style={{ width: "44px" }}>
-          <i className="fas fa-sign-in-alt"></i>
-          </Nav.Link>
+          <Nav className="mr-auto">
+            <Nav.Link as={NavLink} to="/cart">
+              <i className="fas fa-shopping-cart"></i>
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/membercenter">
+              <i className="fas fa-user-alt"></i>
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/login" style={{ width: "44px" }}>
+              <i className="fas fa-sign-in-alt"></i>
+            </Nav.Link>
           </Nav>
         </div>
       </Navbar>
