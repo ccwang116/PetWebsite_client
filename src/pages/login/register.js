@@ -1,54 +1,50 @@
-import React, { useEffect, useState } from 'react'
-import { withRouter } from 'react-router-dom'
-
-var sha1 = require('sha1')
+import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  registerProcess,
+  setUsername,
+  setPassword,
+  setUserData,
+  setName,
+  setConfirmpassword,
+} from "../../features/auth/userSlice";
+var sha1 = require("sha1");
 
 function MyRegister(props) {
-  const [insertData, setInsertData] = useState('')
-
-  const {
-    setName,
-    username,
-    setUsername,
-    password,
-    setPassword,
-    loginErrors,
-    registerProcess,
-    setConfirmpassword,
-    data,
-    setData,
-  } = props
-
+  const [insertData, setInsertData] = useState("");
+  const username = useSelector((state) => state.user.username);
+  const password = useSelector((state) => state.user.password);
+  const loginErrors = useSelector((state) => state.user.loginErrors);
+  const dispatch = useDispatch();
   async function getData(username) {
-    const response = await fetch(`http://localhost:3002/member/${username}`)
-    const json = await response.json()
-    const items = json.rows
-    setData(items)
-
-    return data
+    const response = await fetch(`http://localhost:3002/member/${username}`);
+    const json = await response.json();
+    const items = json.rows;
+    dispatch(setUserData(items));
   }
 
   async function insertMemberToServer(item) {
-    const request = new Request('http://localhost:3002/member/insertMember', {
-      method: 'POST',
+    const request = new Request("http://localhost:3002/member/insertMember", {
+      method: "POST",
       body: JSON.stringify(item),
       headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       }),
-    })
+    });
 
-    console.log('After JSON: ', JSON.stringify(item))
+    console.log("After JSON: ", JSON.stringify(item));
 
-    const response = await fetch(request)
-    const data = await response.json()
+    const response = await fetch(request);
+    const data = await response.json();
   }
 
   const registerSuccessCallback = () => {
-    insertMemberToServer(insertData)
-    alert('註冊成功，跳到login')
-    props.history.push('/login', { from: '從登入頁來的' })
-  }
+    insertMemberToServer(insertData);
+    alert("註冊成功，跳到login");
+    props.history.push("/login", { from: "從登入頁來的" });
+  };
 
   const displayErrors = loginErrors.length ? (
     <div className="alert alert-danger" role="alert">
@@ -59,8 +55,8 @@ function MyRegister(props) {
       </ul>
     </div>
   ) : (
-    ''
-  )
+    ""
+  );
 
   const displayForm = (
     <>
@@ -76,11 +72,11 @@ function MyRegister(props) {
                   required="required"
                   placeholder="請輸入姓名暱稱"
                   onChange={(event) => {
-                    setName(event.target.value)
+                    dispatch(setName(event.target.value));
                     setInsertData({
                       ...insertData,
                       memberName: event.target.value,
-                    })
+                    });
                   }}
                 />
                 <h5>Account</h5>
@@ -91,11 +87,11 @@ function MyRegister(props) {
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   placeholder="請輸入信箱帳號"
                   onChange={(event) => {
-                    setUsername(event.target.value)
+                    dispatch(setUsername(event.target.value));
                     setInsertData({
                       ...insertData,
                       email: event.target.value,
-                    })
+                    });
                   }}
                 />
               </div>
@@ -107,11 +103,11 @@ function MyRegister(props) {
                   required="required"
                   placeholder="請輸入密碼"
                   onChange={(event) => {
-                    setPassword(event.target.value)
+                    dispatch(setPassword(event.target.value));
                     setInsertData({
                       ...insertData,
                       pwd: sha1(event.target.value),
-                    })
+                    });
                   }}
                 />
                 <h5>Confirm</h5>
@@ -123,7 +119,7 @@ function MyRegister(props) {
                   required="required"
                   placeholder="再次確認密碼"
                   onChange={(event) => {
-                    setConfirmpassword(event.target.value)
+                    dispatch(setConfirmpassword(event.target.value));
                   }}
                 />
                 <div className="loginBlock">
@@ -132,11 +128,10 @@ function MyRegister(props) {
                     type="submit"
                     value="Register"
                     onMouseEnter={() => {
-                      console.log(data)
-                      getData(username)
+                      getData(username);
                     }}
                     onClick={() => {
-                      registerProcess(registerSuccessCallback)
+                      dispatch(registerProcess({ registerSuccessCallback }));
                     }}
                   />
                 </div>
@@ -148,9 +143,9 @@ function MyRegister(props) {
         </div>
       </form>
     </>
-  )
+  );
 
-  return <>{displayForm}</>
+  return <>{displayForm}</>;
 }
 
-export default withRouter(MyRegister)
+export default withRouter(MyRegister);

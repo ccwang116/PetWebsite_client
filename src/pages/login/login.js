@@ -1,43 +1,53 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  loginProcess,
+  logoutProcess,
+  setUsername,
+  setPassword,
+  setUserData,
+  setLoginErrors,
+} from "../../features/auth/userSlice";
+var sha1 = require("sha1");
 
 function MyLogin(props) {
-  const {
-    data,
-    setData,
-    username,
-    setUsername,
-    setPassword,
-    loginProcess,
-    logoutProcess,
-    loginErrors,
-  } = props;
+  const userData = useSelector((state) => state.user.userData);
+  const username = useSelector((state) => state.user.username);
+  const loginErrors = useSelector((state) => state.user.loginErrors);
+  const dispatch = useDispatch();
   const [isShowNext, setIsShowNext] = useState(false);
   async function getData(username) {
     const response = await fetch(`http://localhost:3002/member/${username}`);
     const json = await response.json();
     const items = json.rows;
-    setData(items);
+    if (items.length === 0) {
+      dispatch(setLoginErrors(["E-mail is not exist"]));
+      return;
+    }
+    dispatch(setUserData(items));
+    dispatch(setLoginErrors([]));
     setIsShowNext(true);
   }
 
   // 錯誤訊息陣列的呈現
-  const displayErrors = loginErrors.length ? (
-    <div className="alert alert-danger" role="alert">
-      <ul className="list-unstyled">
-        {loginErrors.map((v, i) => (
-          <li key={i}>{v}</li>
-        ))}
-      </ul>
-    </div>
-  ) : (
-    ""
-  );
+  const displayErrors =
+    loginErrors.length > 0 ? (
+      <div className="alert alert-danger" role="alert">
+        <ul className="list-unstyled">
+          {loginErrors.map((v, i) => (
+            <li key={i}>{v}</li>
+          ))}
+        </ul>
+      </div>
+    ) : (
+      ""
+    );
 
   // login成功時的callback
   const loginSuccessCallback = () => {
-    localStorage.setItem("member", JSON.stringify(data));
-    console.log(data);
+    localStorage.setItem("member", JSON.stringify(userData));
+    // console.log(userData);
     alert("登入成功");
     props.history.push("/shop", { from: "從登入頁來的" });
   };
@@ -61,7 +71,7 @@ function MyLogin(props) {
       <button
         className="btn btn-secondary mb-2 w-100"
         onClick={() => {
-          logoutProcess(forgetCallback);
+          dispatch(logoutProcess(forgetCallback));
         }}
       >
         forget password?
@@ -74,7 +84,7 @@ function MyLogin(props) {
       <button
         className="btn btn-success mb-2 w-100"
         onClick={() => {
-          logoutProcess(registerCallback);
+          dispatch(logoutProcess(registerCallback));
         }}
       >
         register
@@ -105,10 +115,11 @@ function MyLogin(props) {
               type="text"
               required="required"
               // value={username}
+              disabled={isShowNext}
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               placeholder="請輸入帳號"
               onChange={(event) => {
-                setUsername(event.target.value);
+                dispatch(setUsername(event.target.value));
               }}
             />
             {isShowNext && (
@@ -120,7 +131,7 @@ function MyLogin(props) {
                   required="required"
                   placeholder="請輸入密碼"
                   onChange={(event) => {
-                    setPassword(event.target.value);
+                    dispatch(setPassword(event.target.value));
                   }}
                 />
 
@@ -129,7 +140,9 @@ function MyLogin(props) {
                   type="submit"
                   className="btn btn-warning mb-2 w-100"
                   onClick={() => {
-                    loginProcess(loginSuccessCallback);
+                    dispatch(
+                      loginProcess({ sha1: sha1, loginSuccessCallback })
+                    );
                   }}
                 />
               </>

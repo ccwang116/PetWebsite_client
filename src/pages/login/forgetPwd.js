@@ -1,15 +1,13 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
-
+import React from "react";
+import { withRouter } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setUsername } from "../../features/auth/userSlice";
 function MyForgetPwd(props) {
-  const {
-    username,
-    setUsername,
-    auth,
-  } = props
-
+  const { auth } = props;
+  const username = useSelector((state) => state.user.username);
+  const dispatch = useDispatch();
   const displayForm = auth ? (
-    ''
+    ""
   ) : (
     <>
       <div className="bg position-relative d-flex">
@@ -23,7 +21,7 @@ function MyForgetPwd(props) {
                 value={username}
                 placeholder="請輸入您的帳號"
                 onChange={(event) => {
-                  setUsername(event.target.value)
+                  dispatch(setUsername(event.target.value));
                 }}
               />
             </div>
@@ -43,9 +41,9 @@ function MyForgetPwd(props) {
         <div className="bgRight-forgetPwd"></div>
       </div>
     </>
-  )
+  );
 
-  return <>{displayForm}</>
+  return <>{displayForm}</>;
 }
 
-export default withRouter(MyForgetPwd)
+export default withRouter(MyForgetPwd);
