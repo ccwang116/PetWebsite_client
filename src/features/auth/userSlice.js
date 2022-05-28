@@ -9,6 +9,7 @@ export const userSlice = createSlice({
     password: "",
     confirmpassword: "",
     loginErrors: [],
+    auth: false,
   },
   reducers: {
     loginProcess: (state, action) => {
@@ -40,12 +41,15 @@ export const userSlice = createSlice({
 
       // 執行成功的callback(來自MemberLogin)
       // loginSuccessCallback();
+      state.auth = true;
       action.payload.loginSuccessCallback();
     },
     logoutProcess: (state, action) => {
       state.name = "";
       state.username = "";
       state.password = "";
+      state.auth = false;
+      localStorage.removeItem("member");
       // 執行成功的callback(來自MemberLogin)
       action.payload();
     },
@@ -97,6 +101,9 @@ export const userSlice = createSlice({
     setConfirmpassword: (state, action) => {
       state.confirmpassword = action.payload;
     },
+    setAuth: (state, action) => {
+      state.auth = action.payload;
+    },
   },
 });
 
@@ -110,6 +117,7 @@ export const {
   setLoginErrors,
   setName,
   setConfirmpassword,
+  setAuth,
 } = userSlice.actions;
 
 export default userSlice.reducer;

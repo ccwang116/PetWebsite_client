@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import MyNavbar from "./components/MyNavbar";
 import MyFooter from "./components/MyFooter";
@@ -37,6 +38,8 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 
 import Appointment from "./pages/Clinic/Appointment";
 
+import { setAuth } from "./features/auth/userSlice";
+
 function App() {
   //類別用
   // const [menuId,setMenuId]=useState('1')
@@ -44,7 +47,10 @@ function App() {
     localStorage.setItem("menuId", number);
   }
   const menuId = localStorage.getItem("menuId") || "1";
-
+  const dispatch = useDispatch();
+  if (JSON.parse(localStorage.getItem("member"))) {
+    dispatch(setAuth(true));
+  }
   return (
     <Router>
       <>

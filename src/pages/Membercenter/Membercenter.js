@@ -1,39 +1,52 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import MemberListShow from "./MemberListShow"
-import Editpassword from "./Editpassword"
-import MyBreadcrumb from '../../components/MyBreadcrumbForMember'
+import MemberListShow from "./MemberListShow";
+import Editpassword from "./Editpassword";
+import MyBreadcrumb from "../../components/MyBreadcrumbForMember";
 
 function Membercenter(props) {
-  const [member, setMember] = useState("")
-  const [isedit, setIsedit] = useState(false)
-  const [ischangepwd, setIschangepwd] = useState(false)
+  const [member, setMember] = useState("");
+  const [isedit, setIsedit] = useState(false);
+  const [ischangepwd, setIschangepwd] = useState(false);
+  const auth = useSelector((state) => state.user.auth);
 
-  const localMember = JSON.parse(localStorage.getItem('member')) || [{ memberName: '' ,memberId:''}]
-  
-  
+  const localMember = JSON.parse(localStorage.getItem("member")) || [
+    { memberName: "", memberId: "" },
+  ];
+
   async function getData(memberId) {
-    const request = new Request(`http://localhost:3002/membercenter/list/${memberId}`, {
-      method: "GET",
-      headers: new Headers({
-        Accept: "application/json",
-        "Content-Type": "appliaction/json",
-      }),
-    })
+    const request = new Request(
+      `http://localhost:3002/membercenter/list/${memberId}`,
+      {
+        method: "GET",
+        headers: new Headers({
+          Accept: "application/json",
+          "Content-Type": "appliaction/json",
+        }),
+      }
+    );
 
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log("顯示的資料", data)
+    const response = await fetch(request);
+    const data = await response.json();
+    console.log("顯示的資料", data);
     // 設定資料
     if (data.length > 0) {
-      setMember(data[0])
+      setMember(data[0]);
     } else {
-      setMember(localMember[0])
+      setMember(localMember[0]);
     }
   }
   useEffect(() => {
-    getData(localMember[0].memberId)
-  }, [])
+    if (!auth) {
+      alert("請先登入");
+      props.history.push("/login");
+      return;
+    }
+    getData(localMember[0].memberId);
+  }, []);
+
   async function updateMemberToSever(item, successCallback = () => {}) {
     // 開啟載入指示
     // setDataLoading(true)
@@ -46,12 +59,12 @@ function Membercenter(props) {
         Accept: "application/json",
         "Content-Type": "application/json",
       }),
-    })
+    });
 
-    console.log("After JSON: ", JSON.stringify(item))
+    console.log("After JSON: ", JSON.stringify(item));
 
-    const response = await fetch(request)
-    const data = await response.json()
+    const response = await fetch(request);
+    const data = await response.json();
 
     // console.log('伺服器回傳的json資料', data)
     // 要等驗証過，再設定資料(簡單的直接設定)
@@ -62,11 +75,11 @@ function Membercenter(props) {
     // }
   }
   const handleEditedSave = (member) => {
-    const newMember = member
-    updateMemberToSever(newMember)
-    setMember(newMember)
-    alert("儲存成功")
-  }
+    const newMember = member;
+    updateMemberToSever(newMember);
+    setMember(newMember);
+    alert("儲存成功");
+  };
 
   //把新的圖片名稱存回database
   async function updateImgToSever(item, successCallback = () => {}) {
@@ -77,20 +90,19 @@ function Membercenter(props) {
         Accept: "application/json",
         "Content-Type": "application/json",
       }),
-    })
+    });
 
-    const response = await fetch(request)
-    const data = await response.json()
+    const response = await fetch(request);
+    const data = await response.json();
     // await document.getElementById("myimg").setAttribute('src', 'http://localhost:3002/img-uploads/' +data.filename);
   }
   const handleImgSave = (member) => {
-    const newMember = member
-    updateImgToSever(newMember)
-    setMember(newMember)
-    alert("儲存成功")
-  }
+    const newMember = member;
+    updateImgToSever(newMember);
+    setMember(newMember);
+    alert("儲存成功");
+  };
 
-  
   return (
     <>
       <MyBreadcrumb />
@@ -105,19 +117,19 @@ function Membercenter(props) {
         />
       ) : (
         <MemberListShow
-        member={member}
-        setMember={setMember}
-        isedit={isedit}
-        setIsedit={setIsedit}
-        handleEditedSave={handleEditedSave}
-        ischangepwd={ischangepwd}
-        setIschangepwd={setIschangepwd}
-        handleImgSave={handleImgSave}
-        localMember={localMember}
-      />
+          member={member}
+          setMember={setMember}
+          isedit={isedit}
+          setIsedit={setIsedit}
+          handleEditedSave={handleEditedSave}
+          ischangepwd={ischangepwd}
+          setIschangepwd={setIschangepwd}
+          handleImgSave={handleImgSave}
+          localMember={localMember}
+        />
       )}
     </>
-  )
+  );
 }
 
-export default Membercenter
+export default withRouter(Membercenter);

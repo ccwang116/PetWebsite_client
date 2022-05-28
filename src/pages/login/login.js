@@ -14,6 +14,7 @@ var sha1 = require("sha1");
 function MyLogin(props) {
   const userData = useSelector((state) => state.user.userData);
   const username = useSelector((state) => state.user.username);
+  const auth = useSelector((state) => state.user.auth);
   const loginErrors = useSelector((state) => state.user.loginErrors);
   const dispatch = useDispatch();
   const [isShowNext, setIsShowNext] = useState(false);
@@ -54,8 +55,8 @@ function MyLogin(props) {
 
   // logout成功時的callback
   const logoutSuccessCallback = () => {
-    alert("登出成功，跳回上一頁");
-    props.history.goBack();
+    alert("登出成功，跳回商品頁");
+    props.history.push("/shop");
   };
 
   const forgetCallback = () => {
@@ -88,6 +89,29 @@ function MyLogin(props) {
         }}
       >
         register
+      </button>
+    </div>
+  );
+  const logoutButton = (
+    <div
+      style={{
+        width: "250px",
+        height: "320px",
+        left: "840px",
+        top: "140px",
+        borderRadius: "10px",
+        padding: "20px",
+        background: "rgba(255,255,255,0.8)",
+        margin: "0 auto",
+      }}
+    >
+      <button
+        className="btn btn-success mb-2 w-100"
+        onClick={() => {
+          dispatch(logoutProcess(logoutSuccessCallback));
+        }}
+      >
+        log out
       </button>
     </div>
   );
@@ -175,7 +199,7 @@ function MyLogin(props) {
             "url('https://cdn.pixabay.com/photo/2018/01/02/13/01/dog-3056131_960_720.jpg')",
         }}
       >
-        {displayForm}
+        {auth ? logoutButton : displayForm}
       </div>
     </>
   );
