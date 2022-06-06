@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { Table, Container, Row, Col, ListGroup, Image } from 'react-bootstrap'
-import { array } from "prop-types";
+import { Table, Container, Row, Col, ListGroup, Image } from "react-bootstrap";
 
 function CategoryBar(props) {
   const { menuId, setMenuId } = props;
   const [menu, setMenu] = useState([]);
-  const [menuShow,setMenuShow]=useState(true)
+  const [menuShow, setMenuShow] = useState(true);
   const pathlist = [
     "/shop",
     "/shop/dogfood",
@@ -19,18 +18,25 @@ function CategoryBar(props) {
     "/shop/dogstomach",
     "/shop/catkidney",
     "/shop/catstomach",
-  ]
-  const pathName = ["所有商品","狗飼料",
-  "狗罐頭","狗鮮食",
-  "貓飼料","貓罐頭",
-  "貓鮮食","狗腎臟保健",
-  "狗腸胃保健","貓腎臟保健","貓腸胃保健"]
- 
-  
+  ];
+  const pathName = [
+    "所有商品",
+    "狗飼料",
+    "狗罐頭",
+    "狗鮮食",
+    "貓飼料",
+    "貓罐頭",
+    "貓鮮食",
+    "狗腎臟保健",
+    "狗腸胃保健",
+    "貓腎臟保健",
+    "貓腸胃保健",
+  ];
+
   // 先找出對應的中文詞
-  let locationPathname = props.location.pathname
-  const index = pathlist.findIndex((v) => v === locationPathname)
-  
+  let locationPathname = props.location.pathname;
+  const index = pathlist.findIndex((v) => v === locationPathname);
+
   async function getData() {
     const request = new Request(`http://localhost:3002/category/show/`, {
       method: "GET",
@@ -49,8 +55,8 @@ function CategoryBar(props) {
 
   useEffect(() => {
     getData();
-    (document.body.offsetWidth > 978)?setMenuShow(true):setMenuShow(false)
-    console.log(index)
+    document.body.offsetWidth > 978 ? setMenuShow(true) : setMenuShow(false);
+    console.log(index);
   }, []);
   return (
     <>
@@ -58,15 +64,19 @@ function CategoryBar(props) {
         <button
           className="btn btn-primary w-100 navbar-toggler"
           type="button"
-          onClick={()=>{setMenuShow(!menuShow)}}
+          onClick={() => {
+            setMenuShow(!menuShow);
+          }}
         >
           <span style={{ fontSize: "14pt" }}>
-          {pathName[index]}
+            {pathName[index]}
             <i className="fas fa-sort-down"></i>
           </span>
         </button>
-        <div className={menuShow?"":"collapse navbar-collapse"} id="navbarSupportedContent">
-          
+        <div
+          className={menuShow ? "" : "collapse navbar-collapse"}
+          id="navbarSupportedContent"
+        >
           <ListGroup>
             {menu.map((value, index) => {
               return (
@@ -83,7 +93,6 @@ function CategoryBar(props) {
               );
             })}
           </ListGroup>
-         
         </div>
       </nav>
     </>

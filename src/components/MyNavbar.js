@@ -4,14 +4,44 @@ import { Link, NavLink, withRouter } from "react-router-dom";
 
 function MyNavbar(props) {
   const { menuId, setMenuId } = props;
-  const [dogShow, setDogShow] = useState(false);
-  const [catShow, setCatShow] = useState(false);
-  const [healthShow, setHealthShow] = useState(false);
+  const [activeBar, setActiveBar] = useState(0);
 
   const member = JSON.parse(localStorage.getItem("member")) || [
     { memberName: "" },
   ];
-
+  const menuList = [
+    {
+      name: "狗食",
+      id: 2,
+      url_key: "dogfood",
+      submenuList: [
+        { name: "乾糧", id: 2, url_key: "dogfood" },
+        { name: "罐頭", id: 3, url_key: "dogcan" },
+        { name: "冷凍食品", id: 4, url_key: "dogwet" },
+      ],
+    },
+    {
+      name: "貓食",
+      id: 5,
+      url_key: "catfood",
+      submenuList: [
+        { name: "乾糧", id: 5, url_key: "catfood" },
+        { name: "罐頭", id: 6, url_key: "catcan" },
+        { name: "冷凍食品", id: 7, url_key: "catwet" },
+      ],
+    },
+    {
+      name: "健康保健",
+      id: 9,
+      url_key: "health",
+      submenuList: [
+        { name: "狗腎臟", id: 8, url_key: "dogkidney" },
+        { name: "狗腸胃", id: 9, url_key: "dogstomach" },
+        { name: "貓腎臟", id: 10, url_key: "catkidney" },
+        { name: "貓腸胃", id: 11, url_key: "catstomach" },
+      ],
+    },
+  ];
   const slideDownStyle = {
     position: "absolute",
     // width: "185px",
@@ -64,177 +94,41 @@ function MyNavbar(props) {
         <Navbar.Brand href="/">PET FEED</Navbar.Brand>
         <div>
           <Nav className="mr-auto">
-            <a
-              href="http://localhost:3000/shop/dogfood"
-              style={{ position: "relative" }}
-              className="nav-link"
-              onMouseEnter={() => setDogShow(true)}
-              onMouseLeave={() => setDogShow(false)}
-              onClick={() => {
-                setDogShow(false);
-                setMenuId(2);
-              }}
-            >
-              狗食
-              {dogShow ? (
-                <div
-                  className="d-flex justify-content-center nav-show-box bg-primary"
-                  style={slideDownStyle}
-                >
-                  <a
-                    className="nav-link"
-                    href="http://localhost:3000/shop/dogfood"
-                    onClick={() => {
-                      setDogShow(false);
-                      setMenuId(2);
-                      // localStorage.setItem("page", 1);
-                    }}
+            {menuList.map((menu) => (
+              <a
+                key={menu.id}
+                href={`http://localhost:3000/shop/${menu.url_key}`}
+                style={{ position: "relative" }}
+                className="nav-link"
+                onMouseEnter={() => setActiveBar(menu.id)}
+                onMouseLeave={() => setActiveBar(0)}
+                onClick={() => {
+                  setActiveBar(0);
+                  setMenuId(menu.id);
+                }}
+              >
+                {menu.name}
+                {activeBar === menu.id && (
+                  <div
+                    className="d-flex justify-content-center nav-show-box bg-primary"
+                    style={slideDownStyle}
                   >
-                    乾糧
-                  </a>
-                  <a
-                    className="nav-link"
-                    href="/shop/dogcan"
-                    onClick={() => {
-                      setDogShow(false);
-                      setMenuId(3);
-                    }}
-                  >
-                    罐頭
-                  </a>
-                  <a
-                    className="nav-link"
-                    href="/shop/dogwet"
-                    onClick={() => {
-                      setDogShow(false);
-                      setMenuId(4);
-                    }}
-                  >
-                    冷凍食品
-                  </a>
-                </div>
-              ) : (
-                ""
-              )}
-            </a>
-
-            <a
-              href="http://localhost:3000/shop/catfood"
-              style={{ position: "relative" }}
-              className="nav-link"
-              onMouseEnter={() => setCatShow(true)}
-              onMouseLeave={() => setCatShow(false)}
-              onClick={() => {
-                setCatShow(false);
-                setMenuId(5);
-              }}
-            >
-              貓食
-              {catShow ? (
-                <div
-                  className="d-flex justify-content-center nav-show-box bg-primary"
-                  style={slideDownStyle}
-                >
-                  <a
-                    className="nav-link"
-                    href="http://localhost:3000/shop/catfood"
-                    onClick={() => {
-                      setCatShow(false);
-                      setMenuId(5);
-                      // localStorage.setItem("page", 1);
-                    }}
-                  >
-                    乾糧
-                  </a>
-                  <a
-                    className="nav-link"
-                    href="/shop/catcan"
-                    onClick={() => {
-                      setCatShow(false);
-                      setMenuId(6);
-                    }}
-                  >
-                    罐頭
-                  </a>
-                  <a
-                    className="nav-link"
-                    href="/shop/catwet"
-                    onClick={() => {
-                      setCatShow(false);
-                      setMenuId(7);
-                    }}
-                  >
-                    冷凍食品
-                  </a>
-                </div>
-              ) : (
-                ""
-              )}
-            </a>
-
-            <a
-              href="http://localhost:3000/shop/catfood"
-              style={{ position: "relative" }}
-              className="nav-link"
-              onMouseEnter={() => setHealthShow(true)}
-              onMouseLeave={() => setHealthShow(false)}
-              onClick={() => {
-                setHealthShow(false);
-                setMenuId(9);
-              }}
-            >
-              健康保健
-              {healthShow ? (
-                <div
-                  className="d-flex justify-content-center nav-show-box bg-primary"
-                  style={slideDownStyle}
-                >
-                  <a
-                    className="nav-link"
-                    href="http://localhost:3000/shop/dogkidney"
-                    onClick={() => {
-                      setHealthShow(false);
-                      setMenuId(8);
-                      // localStorage.setItem("page", 1);
-                    }}
-                  >
-                    狗腎臟保健
-                  </a>
-                  <a
-                    className="nav-link"
-                    href="/shop/dogstomach"
-                    onClick={() => {
-                      setHealthShow(false);
-                      setMenuId(9);
-                    }}
-                  >
-                    狗腸胃保健
-                  </a>
-                  <a
-                    className="nav-link"
-                    href="/shop/catkidney"
-                    onClick={() => {
-                      setHealthShow(false);
-                      setMenuId(10);
-                    }}
-                  >
-                    貓腎臟保健
-                  </a>
-                  <a
-                    className="nav-link"
-                    href="/shop/catstomach"
-                    onClick={() => {
-                      setHealthShow(false);
-                      setMenuId(11);
-                    }}
-                  >
-                    貓腸胃保健
-                  </a>
-                </div>
-              ) : (
-                ""
-              )}
-            </a>
+                    {menu.submenuList.map((sub) => (
+                      <a
+                        className="nav-link"
+                        href={`http://localhost:3000/shop/${sub.url_key}`}
+                        onClick={() => {
+                          setActiveBar(0);
+                          setMenuId(sub.id);
+                        }}
+                      >
+                        {sub.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </a>
+            ))}
             <a className="nav-link" href="/appointment">
               合作診所
             </a>
