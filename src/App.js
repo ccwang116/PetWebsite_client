@@ -93,16 +93,16 @@ function App() {
               <MyRegister />
             </Route>
 
-            <Route path="/forgetpwd">
+            <ProtectedRoute path="/forgetpwd">
               <MyForgetPwd />
-            </Route>
+            </ProtectedRoute>
 
             <Route path="/memberorders">
               <MemberOrders />
             </Route>
-            <Route exact path="/membercenter">
+            <ProtectedRoute exact path="/membercenter">
               <Membercenter />
-            </Route>
+            </ProtectedRoute>
             <Route exact path="/membercenter/coupon">
               <Coupon />
             </Route>

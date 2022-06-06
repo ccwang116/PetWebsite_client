@@ -10,7 +10,7 @@ function Membercenter(props) {
   const [member, setMember] = useState("");
   const [isedit, setIsedit] = useState(false);
   const [ischangepwd, setIschangepwd] = useState(false);
-  const auth = useSelector((state) => state.user.auth);
+  // const auth = useSelector((state) => state.user.auth);
 
   const localMember = JSON.parse(localStorage.getItem("member")) || [
     { memberName: "", memberId: "" },
@@ -39,11 +39,11 @@ function Membercenter(props) {
     }
   }
   useEffect(() => {
-    if (!auth) {
-      alert("請先登入");
-      props.history.push("/login");
-      return;
-    }
+    // if (!auth) {
+    //   alert("請先登入");
+    //   props.history.push("/login");
+    //   return;
+    // }
     getData(localMember[0].memberId);
   }, []);
 
