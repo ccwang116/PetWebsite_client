@@ -50,7 +50,7 @@ function CategoryBar(props) {
 
     const response = await fetch(request);
     const data = await response.json();
-    console.log("顯示的資料", data);
+    // console.log("顯示的資料", data);
     // 設定資料
     setMenu(data);
   }
@@ -58,7 +58,7 @@ function CategoryBar(props) {
   useEffect(() => {
     getData();
     document.body.offsetWidth > 978 ? setMenuShow(true) : setMenuShow(false);
-    console.log(index);
+    // console.log(index);
   }, []);
   return (
     <>

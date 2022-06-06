@@ -98,6 +98,7 @@ function MyNavbar(props) {
           <Nav className="mr-auto">
             {menuList.map((menu) => (
               <Nav.Link
+                as={NavLink}
                 key={menu.id}
                 to={`/shop/${menu.url_key}`}
                 style={{ position: "relative" }}
@@ -106,7 +107,7 @@ function MyNavbar(props) {
                 onMouseLeave={() => setActiveBar(0)}
                 onClick={() => {
                   setActiveBar(0);
-                  dispatch(setMenuId(menu.id));
+                  // dispatch(setMenuId(menu.id));
                 }}
               >
                 {menu.name}
@@ -117,6 +118,7 @@ function MyNavbar(props) {
                   >
                     {menu.submenuList.map((sub) => (
                       <Nav.Link
+                        as={NavLink}
                         className="nav-link"
                         to={`/shop/${sub.url_key}`}
                         onClick={() => {

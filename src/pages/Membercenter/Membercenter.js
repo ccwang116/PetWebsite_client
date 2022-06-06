@@ -30,7 +30,7 @@ function Membercenter(props) {
 
     const response = await fetch(request);
     const data = await response.json();
-    console.log("顯示的資料", data);
+    // console.log("顯示的資料", data);
     // 設定資料
     if (data.length > 0) {
       setMember(data[0]);
