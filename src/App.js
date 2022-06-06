@@ -41,12 +41,6 @@ import Appointment from "./pages/Clinic/Appointment";
 import { setAuth } from "./features/auth/userSlice";
 
 function App() {
-  //類別用
-  // const [menuId,setMenuId]=useState('1')
-  function setMenuId(number) {
-    localStorage.setItem("menuId", number);
-  }
-  const menuId = localStorage.getItem("menuId") || "1";
   const dispatch = useDispatch();
   if (JSON.parse(localStorage.getItem("member"))) {
     dispatch(setAuth(true));
@@ -54,7 +48,7 @@ function App() {
   return (
     <Router>
       <>
-        <MyNavbar menuId={menuId} setMenuId={setMenuId} />
+        <MyNavbar />
         <MainContent>
           <Switch>
             <Route path="/about">
@@ -65,7 +59,7 @@ function App() {
             </Route>
 
             <Route path="/shop/:second?/:third?/:fourth?/:page?">
-              <ProductList menuId={menuId} setMenuId={setMenuId} />
+              <ProductList />
             </Route>
             <Route path="/mall/itemDetail/:second?/:third?/:fourth?/:fifth?/:sixth?/:seventh?/:page?">
               <ItemDetail />
@@ -123,7 +117,7 @@ function App() {
             </Route>
 
             <Route exact path="/">
-              <Home menuId={menuId} setMenuId={setMenuId} />
+              <Home />
             </Route>
             <Route exact path="/faq">
               <Faq />

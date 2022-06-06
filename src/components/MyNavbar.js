@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-import { Link, NavLink, withRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { Navbar, Nav, Button } from "react-bootstrap";
+import { NavLink, withRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setMenuId } from "../features/menu/productsSlice";
 
 function MyNavbar(props) {
-  const { menuId, setMenuId } = props;
+  const dispatch = useDispatch();
   const [activeBar, setActiveBar] = useState(0);
 
   const member = JSON.parse(localStorage.getItem("member")) || [
@@ -95,16 +97,16 @@ function MyNavbar(props) {
         <div>
           <Nav className="mr-auto">
             {menuList.map((menu) => (
-              <a
+              <Nav.Link
                 key={menu.id}
-                href={`http://localhost:3000/shop/${menu.url_key}`}
+                to={`/shop/${menu.url_key}`}
                 style={{ position: "relative" }}
                 className="nav-link"
                 onMouseEnter={() => setActiveBar(menu.id)}
                 onMouseLeave={() => setActiveBar(0)}
                 onClick={() => {
                   setActiveBar(0);
-                  setMenuId(menu.id);
+                  dispatch(setMenuId(menu.id));
                 }}
               >
                 {menu.name}
@@ -114,20 +116,20 @@ function MyNavbar(props) {
                     style={slideDownStyle}
                   >
                     {menu.submenuList.map((sub) => (
-                      <a
+                      <Nav.Link
                         className="nav-link"
-                        href={`http://localhost:3000/shop/${sub.url_key}`}
+                        to={`/shop/${sub.url_key}`}
                         onClick={() => {
                           setActiveBar(0);
-                          setMenuId(sub.id);
+                          dispatch(setMenuId(sub.id));
                         }}
                       >
                         {sub.name}
-                      </a>
+                      </Nav.Link>
                     ))}
                   </div>
                 )}
-              </a>
+              </Nav.Link>
             ))}
             <a className="nav-link" href="/appointment">
               合作診所

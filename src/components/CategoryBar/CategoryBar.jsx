@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
-import { Table, Container, Row, Col, ListGroup, Image } from "react-bootstrap";
+import { withRouter, Link } from "react-router-dom";
+import { ListGroup } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { setMenuId } from "../../features/menu/productsSlice";
 
 function CategoryBar(props) {
-  const { menuId, setMenuId } = props;
+  const dispatch = useDispatch();
   const [menu, setMenu] = useState([]);
   const [menuShow, setMenuShow] = useState(true);
   const pathlist = [
@@ -81,14 +83,14 @@ function CategoryBar(props) {
             {menu.map((value, index) => {
               return (
                 <ListGroup.Item key={index} className="list-group-item">
-                  <a
-                    href={`http://localhost:3000${value.linkUrl}`}
+                  <Link
+                    to={`${value.linkUrl}`}
                     onMouseDown={() => {
-                      setMenuId(value.categoryId);
+                      dispatch(setMenuId(value.categoryId));
                     }}
                   >
                     {value.categoryName}
-                  </a>
+                  </Link>
                 </ListGroup.Item>
               );
             })}
